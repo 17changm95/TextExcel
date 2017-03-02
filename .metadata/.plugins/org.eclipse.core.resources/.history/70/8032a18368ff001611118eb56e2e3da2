@@ -4,7 +4,6 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-	Cell[][] spreadsheet = new Cell[12][20];
 
 	@Override
 	public String processCommand(String command)

@@ -1,29 +1,37 @@
 package textExcel;
-
-// Update this file with your own code.
+import java.util.*;
 
 public class Spreadsheet implements Grid
 {
-	Cell[][] spreadsheet = new Cell[12][20];
-
+	
+	//Constructor for Spreadsheet class
+	public Spreadsheet() {
+		Cell[][] spreadsheet = new Cell[12][20];
+		
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[i].length; j++) {
+				spreadsheet[i][j] = new EmptyCell();
+			}
+		}
+	}
+	
 	@Override
 	public String processCommand(String command)
 	{
-		return null;
+		return "lol";
 	}
 
 	@Override
 	public int getRows()
 	{
-		
-		return 0;
+		return 20;
 	}
 
 	@Override
 	public int getCols()
 	{
 		
-		return 0;
+		return 12;
 	}
 
 	@Override
@@ -36,8 +44,6 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		
 		return null;
 	}
-
 }

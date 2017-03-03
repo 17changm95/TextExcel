@@ -1,0 +1,25 @@
+package textExcel;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+// Update this file with your own code.
+
+public class TextExcel
+{
+	
+	//Main method
+	public static void main(String[] args)
+	{
+		String command;
+		Scanner input = new Scanner(System.in);
+		command = input.nextLine();
+		
+		while (!command.equalsIgnoreCase("quit")) {
+			command = input.nextLine();
+			System.out.println("Lol stuff to be implemented later");
+		}
+	    Spreadsheet spread = new Spreadsheet();
+	    spread.processCommand(command);
+	}
+}

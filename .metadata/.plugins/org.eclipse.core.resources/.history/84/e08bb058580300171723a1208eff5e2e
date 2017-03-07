@@ -4,7 +4,7 @@ import java.util.*;
 public class Spreadsheet implements Grid
 {
 	
-	Cell[][] spreadsheet = new EmptyCell[12][20];
+	Cell[][] spreadsheet = new Cell[12][20];
 	
 	//Constructor for Spreadsheet class
 	public Spreadsheet() {
@@ -20,13 +20,10 @@ public class Spreadsheet implements Grid
 		if (command.equalsIgnoreCase("clear")) {
 			for (int i = 0; i < spreadsheet.length; i++) {
 				for (int j = 0; j < spreadsheet[i].length; j++) {
-					spreadsheet[i][j] = (EmptyCell) "";
+					spreadsheet[i][j] = null;
 				}
 			}
-			return "whole grid cleared";
-		} else if (command.equalsIgnoreCase("")) {
-			
-		}
+		} else if (command.equalsIgnoreCase(""))
 		return "";
 	}
 
@@ -50,20 +47,20 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText() {
 		String firstRow = "   ";	//is a printout of the first row
-		String regRow = "";			//is a printout of all other rows
+		String regRow = "";		//is a printout of all other rows
 		
-		for (char c = 'A'; c <= 'L'; c++) {
-			firstRow += "|" + c + "         ";
+		for (int i = 65; i <= 76; i++) {
+			firstRow += "|" + (Character.toString((char) i)) + "         ";
 		}
 		
-		for (int j = 0; j < 20; j++) {
-			if (j + 1 < 10) {
-				regRow += (j + 1) + "  ";
+		for (int j = 1; j <= 20; j++) {
+			if (j < 10) {
+				regRow += j + "  ";
 			} else  {
-				regRow += (j + 1) + " ";
+				regRow += j + " ";
 			}
-			for (int k = 0; k < 12; k++) {
-				regRow += "|" + spreadsheet[j][k].abbreviatedCellText();
+			for (int k = 1; k <= 12; k++) {
+				regRow += "|" + "          ";
 			}
 			regRow += "\n";
 		}

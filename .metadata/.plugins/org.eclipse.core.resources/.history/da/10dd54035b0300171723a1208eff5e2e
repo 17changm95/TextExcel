@@ -20,7 +20,7 @@ public class Spreadsheet implements Grid
 		if (command.equalsIgnoreCase("clear")) {
 			for (int i = 0; i < spreadsheet.length; i++) {
 				for (int j = 0; j < spreadsheet[i].length; j++) {
-					spreadsheet[i][j] = (EmptyCell) "";
+					spreadsheet[i][j] = null;
 				}
 			}
 			return "whole grid cleared";

@@ -1,13 +1,7 @@
 package textExcel;
 
-public class TextCell implements Cell {
+public class RealCell implements Cell {
 
-	private String str;
-	
-	public TextCell(String str) {
-		this.str = str;
-	}
-	
 	public String abbreviatedCellText() {
 		return "";
 	}

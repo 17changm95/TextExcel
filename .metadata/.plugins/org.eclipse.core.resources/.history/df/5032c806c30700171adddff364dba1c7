@@ -27,6 +27,7 @@ public class Spreadsheet implements Grid {
 					spreadsheet[i][j] = new EmptyCell();
 				}
 			}
+			return getGridText();
 		
 		//Reminder to write description for following condition and function
 		} else if (divCommand[0].equalsIgnoreCase("clear") && divCommand.length == 2 && divCommand[1].equals("=") == false) {
@@ -34,25 +35,24 @@ public class Spreadsheet implements Grid {
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(gridCoord);
 			
 			spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new EmptyCell();
-
+			return getGridText();
+			
 		//Following condition detects if = is present. Would assign value according to the data types contained within command
 		} else if (divCommand[1].equals("=")) {
-			SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
+			String gridCoord = divCommand[0];
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(gridCoord);
 			
 			if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
 				spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new PercentCell(divCommand[2]);
 			} else if (divCommand[2].charAt(0) == '"') {
 				spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new TextCell(divCommand[2]);
-			} else if (divCommand[2].matches("[0-9]+")) {
-				spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new RealCell(divCommand[2]);
-			}
+			} else if ()
 				
-		} else if (divCommand[0].length() <= 3) {
-			SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
-			
-			return getCell(gridLoc).fullCellText();
+			return getGridText();
+		} else if (divCommand[1].equals("")) {
+			return getCell(rowNum, colNum);
 		}
-		return getGridText();
+		return "";
 	}
 
 	//Method that returns how many rows there are in spreadsheet
@@ -61,7 +61,7 @@ public class Spreadsheet implements Grid {
 		return 20;
 	}
 
-	//Method that returns how many columns there are in spreadsheet
+	//Method that returns how many columsn there are in spreadsheet
 	@Override
 	public int getCols() {
 		
@@ -71,7 +71,9 @@ public class Spreadsheet implements Grid {
 	//Method that accesses the location of any cell in a character + integer format, such as B3
 	@Override
 	public Cell getCell(Location loc) {
-		return spreadsheet[loc.getCol()][loc.getRow()];
+		SpreadsheetLocation gridLoc = new SpreadsheetLocation(loc);
+		
+		return Cell();
 	}
 
 	//Method that returns a string containing the entire sheet grid

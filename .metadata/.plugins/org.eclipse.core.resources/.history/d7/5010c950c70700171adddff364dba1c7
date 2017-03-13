@@ -37,7 +37,8 @@ public class Spreadsheet implements Grid {
 
 		//Following condition detects if = is present. Would assign value according to the data types contained within command
 		} else if (divCommand[1].equals("=")) {
-			SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
+			String gridCoord = divCommand[0];
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(gridCoord);
 			
 			if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
 				spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new PercentCell(divCommand[2]);
@@ -48,9 +49,7 @@ public class Spreadsheet implements Grid {
 			}
 				
 		} else if (divCommand[0].length() <= 3) {
-			SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
-			
-			return getCell(gridLoc).fullCellText();
+			return getCell(divCommand[0]);
 		}
 		return getGridText();
 	}

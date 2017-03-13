@@ -4,10 +4,6 @@ public class TextCell implements Cell {
 
 	private String str;
 	
-	public TextCell(String str) {
-		this.str = str;
-	}
-	
 	public String abbreviatedCellText() {
 		return "";
 	}

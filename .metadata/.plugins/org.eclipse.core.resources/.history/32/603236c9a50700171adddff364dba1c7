@@ -1,0 +1,34 @@
+package textExcel;
+
+public class SpreadsheetLocation implements Location
+{
+	
+	private String cellName;
+	
+	//Constructor for SpreadsheetLocation
+	public SpreadsheetLocation(String cellName)
+    {
+    	this.cellName = cellName;
+    }
+	
+    //Method for getting the row number of a particular grid coordinate. For instance, the row number for D4 is 4, so the 
+    public int getRow()
+    {
+    	int cellRowNum;
+        cellRowNum = Integer.parseInt(cellName.substring(1)) - 1;
+        return cellRowNum;
+    	
+    }
+
+    @Override
+    public int getCol()
+    {
+    	int cellColNum;
+    	cellName.toUpperCase();
+    	char cellColChar = cellName.charAt(0);
+    	
+    	cellColNum = cellColChar - 65;
+    	
+    	return cellColNum;
+    }
+}

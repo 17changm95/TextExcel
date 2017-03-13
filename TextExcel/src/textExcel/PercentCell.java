@@ -2,11 +2,20 @@ package textExcel;
 
 public class PercentCell implements Cell {
 
+	private String percent;
+	
+	public PercentCell(String percent) {
+		if (percent.substring(percent.length() - 1).equals("%"))
+			this.percent = percent;
+		else
+			throw new IllegalArgumentException("Your value is not a percentage");
+	}
+	
 	public String abbreviatedCellText() {
-		return "";
+		return this.percent;
 	}
 	
 	public String fullCellText() {
-		return "";
+		return this.percent;
 	}
 }

@@ -1,10 +1,9 @@
 package textExcel;
 import java.util.*;
 
-public class Spreadsheet implements Grid
-{
-	
-	Cell[][] spreadsheet = new EmptyCell[12][20];
+public class Spreadsheet implements Grid {
+	//Initializes a spreadsheet that serves as a storage for Cell objects
+	private Cell[][] spreadsheet = new EmptyCell[12][20];
 	
 	//Constructor for Spreadsheet class
 	public Spreadsheet() {
@@ -15,38 +14,57 @@ public class Spreadsheet implements Grid
 		}
 	}
 	
+	//Method that detects what string input is put into the Scanner in the main method in order to execute whatever command is put in
 	@Override
 	public String processCommand(String command) {
+		//Following array is derived through split() which stores String inputs from command as elements separated by spaces
+		String[] divCommand = command.split(" ");
+		
+		//Following condition is to detect clear to clear out whole gridtext and replace with EmptyCell() objects. Returns updated gridText
 		if (command.equalsIgnoreCase("clear")) {
 			for (int i = 0; i < spreadsheet.length; i++) {
 				for (int j = 0; j < spreadsheet[i].length; j++) {
-					spreadsheet[i][j] = (EmptyCell) "";
+					spreadsheet[i][j] = new EmptyCell();
 				}
 			}
-			return "whole grid cleared";
-		} else if (command.equalsIgnoreCase("")) {
+			return getGridText();
+		//Following condition detects if = is present. Would assign value according to the data types contained within command
+		} else if (divCommand[1].equals("=")) {
+			String gridCoord = divCommand[0];
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(gridCoord);
 			
+			if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
+				spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new PercentCell(divCommand[2]);
+			}
+			spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = divCommand[2];
+		} else if (divCommand[1].equals("")) {
+			return getCell(rowNum, colNum);
 		}
 		return "";
 	}
 
+	//Method that returns how many rows there are in spreadsheet
 	@Override
 	public int getRows() {
 		return 20;
 	}
 
+	//Method that returns how many columsn there are in spreadsheet
 	@Override
 	public int getCols() {
 		
 		return 12;
 	}
 
+	//Method that accesses the location of any cell in a character + integer format, such as B3
 	@Override
 	public Cell getCell(Location loc) {
+		SpreadsheetLocation gridLoc = new SpreadsheetLocation(loc);
 		
-		return null;
+		return Cell();
 	}
 
+	//Method that returns a string containing the entire sheet grid
 	@Override
 	public String getGridText() {
 		String firstRow = "   ";	//is a printout of the first row

@@ -1,0 +1,30 @@
+package textExcel;
+
+public class TextCell implements Cell {
+
+	private String str;
+	
+	public TextCell(String strInput) {
+		this.str = strInput;
+	}
+	
+	public String abbreviatedCellText() {
+		String returnStr = str;
+		if (str.length() < 10){
+			while (returnStr.length() < 10){
+				returnStr += " ";
+			}
+			return returnStr;
+		} else if (str.length() > 10){
+			returnStr = returnStr.substring(0, 10);
+			return returnStr;
+		}else{
+			return str;
+		}
+	}
+
+	@Override
+	public String fullCellText() {
+		return "\"" + str + "\"";
+	}
+}

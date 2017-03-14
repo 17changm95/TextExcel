@@ -1,0 +1,101 @@
+package textExcel;
+import java.util.*;
+
+public class Spreadsheet implements Grid {
+	//Initializes a spreadsheet that serves as a storage for Cell objects
+	private Cell[][] spreadsheet = new EmptyCell[12][20];
+	
+	//Constructor for Spreadsheet class
+	public Spreadsheet() {
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[i].length; j++) {
+				spreadsheet[i][j] = new EmptyCell();
+			}
+		}
+	}
+	
+	//Method that detects what string input is put into the Scanner in the main method in order to execute whatever command is put in
+	@Override
+	public String processCommand(String command) {
+		String[] divCommand = command.split(" ", 3);
+		
+		if (command.equalsIgnoreCase("clear")) {
+			for (int i = 0; i < spreadsheet.length; i++) {
+				for (int j = 0; j < spreadsheet[i].length; j++) {
+					spreadsheet[i][j] = new EmptyCell();
+				}
+			}
+			return getGridText();
+			
+		} else if (command.length() < 4) {
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);
+			
+			return getCell(gridLoc).fullCellText();
+			
+		} else if (divCommand.length > 1) {
+			
+			if (divCommand[1].equals("=")) {
+				SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
+				if (divCommand[2].charAt(0) == '"') {
+					spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new TextCell(divCommand[2]);
+				} else if (divCommand[2].matches("[0-9]+")) {
+					spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new RealCell(divCommand[2]);
+				} else if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
+					spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new PercentCell(divCommand[2]);
+				} else if (divCommand[2].indexOf(".") > 0) {
+					spreadsheet[gridLoc.getCol()][gridLoc.getRow()] = new ValueCell(divCommand[2]);
+				}
+			}
+			
+		} else if (divCommand[0].length() <= 3) {
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
+			
+			return getCell(gridLoc).fullCellText();
+		}
+		return getGridText();
+	}
+
+	//Method that returns how many rows there are in spreadsheet
+	@Override
+	public int getRows() {
+		return 20;
+	}
+
+	//Method that returns how many columns there are in spreadsheet
+	@Override
+	public int getCols() {
+		
+		return 12;
+	}
+
+	//Method that accesses the location of any cell in a character + integer format, such as B3
+	@Override
+	public Cell getCell(Location loc) {
+		return spreadsheet[loc.getCol()][loc.getRow()];
+	}
+
+	//Method that returns a string containing the entire sheet grid
+	@Override
+	public String getGridText() {
+		String firstRow = "   ";	//is a printout of the first row
+		String regRow = "";			//is a printout of all other rows
+		
+		for (char c = 'A'; c <= 'L'; c++) {
+			firstRow += "|" + c + "         ";
+		}
+		
+		for (int j = 0; j < 20; j++) {
+			if (j + 1 < 10) {
+				regRow += (j + 1) + "  ";
+			} else  {
+				regRow += (j + 1) + " ";
+			}
+			for (int k = 0; k < 12; k++) {
+				regRow += "|" + spreadsheet[j][k].abbreviatedCellText();
+			}
+			regRow += "\n";
+		}
+		
+		return firstRow + "\n" + regRow;
+	}
+}

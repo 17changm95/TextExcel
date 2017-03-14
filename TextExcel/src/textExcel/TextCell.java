@@ -9,6 +9,9 @@ public class TextCell implements Cell {
 	}
 	
 	public String abbreviatedCellText() {
+		if (this.str.length() < 10) {
+			
+		}
 		return this.str;
 	}
 	

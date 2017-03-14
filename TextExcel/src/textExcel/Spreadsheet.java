@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Spreadsheet implements Grid {
 	//Initializes a spreadArr that serves as a storage for Cell objects
-	private Cell[][] spreadArr = new EmptyCell[12][20];
+	private Cell[][] spreadArr = new Cell[12][20];
 	
 	//Constructor for Spreadsheet class
 	public Spreadsheet() {
@@ -31,7 +31,7 @@ public class Spreadsheet implements Grid {
 		//Condition that command is less than 3 characters to ensure the following command is the cell coordinate. Will inspect cell and return cell value
 		} else if (command.length() < 4) {
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);	
-			return getCell(gridLoc).fullCellText();
+			return (getCell(gridLoc).fullCellText());
 		//Condition that command can be parsed into array with more than one element
 		} else if (divCommand.length > 1) {
 			//Condition that command is an assignment of value to a cell coordinate
@@ -39,8 +39,10 @@ public class Spreadsheet implements Grid {
 				SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
 				int rowNum = gridLoc.getRow();
 				int colNum = gridLoc.getCol();	
+				
 				//Condition for TextCell
 				if (divCommand[2].charAt(0) == '"' && divCommand[2].charAt(divCommand[2].length() - 1) == '"') {
+					//spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(2, divCommand[2].length() - 3));
 					spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(1, divCommand[2].length() - 1));
 				//Condition for PercentCell
 				} else if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {

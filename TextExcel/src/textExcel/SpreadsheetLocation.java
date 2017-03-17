@@ -21,8 +21,8 @@ public class SpreadsheetLocation implements Location {
   //Method for getting the column number of a particular grid coordinate. For instance, the column number for F4 is 6, so getRow() would output "6"   
     public int getCol() {
     	int cellColNum;
-    	gridCoor.toUpperCase();
-    	char cellColChar = gridCoor.charAt(0);
+    	String gridCoorCap = gridCoor.toUpperCase();
+    	char cellColChar = gridCoorCap.charAt(0);
     	
     	cellColNum = cellColChar - 65;
     	

@@ -9,10 +9,19 @@ public class TextCell implements Cell {
 	}
 	
 	public String abbreviatedCellText() {
+		int spaceNum = 10 - this.str.length();
+		String revisedStr = this.str;
 		if (this.str.length() < 10) {
-			
+			for (int i = spaceNum; i > 0; i--) {
+				revisedStr += " ";
+			}
+			return revisedStr;
+		} else if (this.str.length() == 10){
+			return this.str;
+		} else {
+			revisedStr = this.str.substring(0, 9);
+			return revisedStr;
 		}
-		return this.str;
 	}
 	
 	public String fullCellText() {

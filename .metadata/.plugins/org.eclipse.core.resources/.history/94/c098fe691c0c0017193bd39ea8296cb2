@@ -56,7 +56,7 @@ public class Spreadsheet implements Grid {
 				}
 				return getGridText();
 			//Condition that command can be parsed into array and contains "clear" as first element. Clears value of particular value cell or multiple cells separated by spacing
-			} else if (divCommand[0].equalsIgnoreCase("clear")) {
+			} else if (divCommand[0].equals("clear")) {
 				for (int i = 1; i < divCommand.length; i++) {
 					SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[i]);
 					int rowNum = gridLoc.getRow();

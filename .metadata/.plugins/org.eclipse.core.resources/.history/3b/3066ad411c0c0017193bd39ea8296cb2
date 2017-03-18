@@ -309,7 +309,7 @@ public class TestsALL
             grid.processCommand("L2 = \"" + greeting + "\"");
             Cell greetingCell = grid.getCell(new TestLocation(1,11));
             assertEquals("greeting cell text", Helper.format(greeting), greetingCell.abbreviatedCellText());
-            assertEquals("greeting inspection text", "\"" + greeting + "\"", greetingCell.fullCellText());
+            assertEquals("greeting inspection text", "\"" + "greeting" + "\"", greetingCell.fullCellText());
         }
 
         @Test

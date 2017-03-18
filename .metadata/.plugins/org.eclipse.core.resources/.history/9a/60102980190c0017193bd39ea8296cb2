@@ -261,7 +261,7 @@ public class TestsALL
             assertEquals("inspection of empty cell", "", empty);
             grid.processCommand("A1 = \"first\"");
             String first = grid.processCommand("A1");
-            assertEquals("inspection of string cell", "first", "first");
+            assertEquals("inspection of string cell", "first", first);
         }
 
         @Test

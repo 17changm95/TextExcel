@@ -19,7 +19,7 @@ public class TextCell implements Cell {
 		} else if (this.str.length() == 10){
 			return this.str;
 		} else {
-			revisedStr = this.str.substring(0, 10);
+			revisedStr = this.str.substring(0, 9);
 			return revisedStr;
 		}
 	}

@@ -5,7 +5,10 @@ public class PercentCell extends RealCell implements Cell {
 	private String percent;
 	
 	public PercentCell(String percent) {
-		super(percent);
+		if (percent.substring(percent.length() - 1).equals("%"))
+			super(percent);
+		else
+			throw new IllegalArgumentException("Your value is not a percentage");
 	}
 	
 	public String abbreviatedCellText() {

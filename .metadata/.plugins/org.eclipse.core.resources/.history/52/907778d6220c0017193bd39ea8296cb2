@@ -2,8 +2,8 @@ package textExcel;
 
 public class ValueCell extends RealCell implements Cell {
 	
-	public ValueCell(String value) {
-		super(value);
+	public ValueCell(String str) {
+		super(str);
 	}
 	
 	public String abbreviatedCellText() {
@@ -11,12 +11,6 @@ public class ValueCell extends RealCell implements Cell {
 	}
 	
 	public String fullCellText() {
-		return super.fullCellText();
-	}
-	
-	@Override
-	public double getDoubleValue() {
-		//TODO: modify this thing
-		super.getDoubleValue();
+		return "";
 	}
 }

@@ -32,4 +32,8 @@ public class RealCell implements Cell {
 		double num = Double.parseDouble(this.str);
 		return num;
 	}
+	
+	public String toString() {
+		return this.str;
+	}
 }

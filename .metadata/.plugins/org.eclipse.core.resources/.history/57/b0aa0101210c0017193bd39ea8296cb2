@@ -30,6 +30,5 @@ public class RealCell implements Cell {
 	
 	public double getDoubleValue() {
 		double num = Double.parseDouble(this.str);
-		return num;
 	}
 }

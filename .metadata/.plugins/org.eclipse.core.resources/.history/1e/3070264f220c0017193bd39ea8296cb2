@@ -1,0 +1,16 @@
+package textExcel;
+
+public class ValueCell extends RealCell implements Cell {
+	
+	public ValueCell(String str) {
+		super(str);
+	}
+	
+	public String abbreviatedCellText() {
+		super.abbreviatedCellText();
+	}
+	
+	public String fullCellText() {
+		return "";
+	}
+}

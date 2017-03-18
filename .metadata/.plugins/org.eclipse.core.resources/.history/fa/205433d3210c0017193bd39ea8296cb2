@@ -19,6 +19,7 @@ public class Spreadsheet implements Grid {
 	public String processCommand(String command) {
 		//Partitions command into parts separated by spaces
 		String[] divCommand = command.split(" ", 3);
+		
 		//Condition that command is "clear" will turn all cells on spreadArr into EmptyCell objects
 		if (command.equalsIgnoreCase("clear")) {
 			for (int i = 0; i < spreadArr.length; i++) {
@@ -82,6 +83,7 @@ public class Spreadsheet implements Grid {
 	//Method that returns how many columns there are in spreadArr
 	@Override
 	public int getCols() {
+		
 		return 12;
 	}
 
@@ -96,10 +98,13 @@ public class Spreadsheet implements Grid {
 	public String getGridText() {
 		String firstRow = "   ";	//is a printout of the first row
 		String regRow = "";			//is a printout of all other rows
+		
 		for (char c = 'A'; c <= 'L'; c++) {
 			firstRow += "|" + c + "         ";
-		}		
+		}
+		
 		firstRow += "|";
+		
 		for (int j = 0; j < 20; j++) {
 			if (j + 1 < 10) {
 				regRow += (j + 1) + "  ";
@@ -110,7 +115,8 @@ public class Spreadsheet implements Grid {
 				regRow += "|" + spreadArr[k][j].abbreviatedCellText();
 			}
 			regRow += "|\n";
-		}		
+		}
+		
 		return firstRow + "\n" + regRow;
 	}
 }

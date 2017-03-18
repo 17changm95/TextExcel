@@ -10,7 +10,7 @@ public class PercentCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		return super.abbreviatedCellText();
+		
 	}
 	
 	public String fullCellText() {

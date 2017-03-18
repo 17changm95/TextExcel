@@ -7,15 +7,13 @@ public class ValueCell extends RealCell implements Cell {
 	}
 	
 	public String abbreviatedCellText() {
-		/*String str = super.abbreviatedCellText();
+		String str = super.abbreviatedCellText();
 		String[] stringArr = str.split(".");
-		char[] charArr = stringArr[2].toCharArray();
+		char[] charArr = stringArr[1].toCharArray();
 		if (charArr[charArr.length - 1] == '0') {
-			stringArr[2] = stringArr[2].substring(0, stringArr[2].length() - 2);
-			return stringArr[0] + stringArr[1] + stringArr[2];
-		} else {*/
-			return super.abbreviatedCellText();
-		//}
+			stringArr[1].substring(0, stringArr[1].length - 1);
+		}
+		return super.abbreviatedCellText();
 	}
 	
 	public String fullCellText() {

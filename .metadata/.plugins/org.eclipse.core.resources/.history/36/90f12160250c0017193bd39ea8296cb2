@@ -8,7 +8,6 @@ public class PercentCell extends RealCell implements Cell {
 		super(percent);
 	}
 	
-	@Override
 	public String abbreviatedCellText() {
 		return super.abbreviatedCellText();
 	}
@@ -20,7 +19,6 @@ public class PercentCell extends RealCell implements Cell {
 	public double getDoubleValue() {
 		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 2);
 		double num = Double.parseDouble(modifiedStr);
-		num /= 100;
 		return num;
 	}
 }

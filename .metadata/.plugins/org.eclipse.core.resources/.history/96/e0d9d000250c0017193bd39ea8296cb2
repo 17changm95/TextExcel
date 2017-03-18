@@ -17,7 +17,6 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public double getDoubleValue() {
-		double num = 4.0;
-		return num;
+		//TODO: finish this thing too
 	}
 }

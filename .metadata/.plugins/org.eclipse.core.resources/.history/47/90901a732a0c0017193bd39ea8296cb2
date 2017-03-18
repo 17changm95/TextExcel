@@ -10,7 +10,13 @@ public class PercentCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		return super.abbreviatedCellText();
+		String percent = super.abbreviatedCellText();
+		if (percent.contains('.')) {
+			String[] arr = percent.split(".");
+			return arr[0] + "%";
+		} else {
+			return percent;
+		}
 	}
 	
 	public String fullCellText() {

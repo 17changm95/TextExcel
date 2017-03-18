@@ -1,12 +1,11 @@
 package textExcel;
 
-public class FormulaCell extends RealCell implements Cell {
-
-	public FormulaCell(String formula) {
-		super(formula);
+public class ValueCell extends RealCell implements Cell {
+	
+	public ValueCell(String value) {
+		super(value);
 	}
 	
-	@Override
 	public String abbreviatedCellText() {
 		return super.abbreviatedCellText();
 	}
@@ -17,7 +16,7 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public double getDoubleValue() {
-		double num = 4.0;
-		return num;
+		//TODO: modify this thing
+		super.getDoubleValue();
 	}
 }

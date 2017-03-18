@@ -41,10 +41,8 @@ public class Spreadsheet implements Grid {
 				
 				//Condition for TextCell
 				if (divCommand[2].charAt(0) == '"' && divCommand[2].charAt(divCommand[2].length() - 1) == '"') {
+					//spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(2, divCommand[2].length() - 3));
 					spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(1, divCommand[2].length() - 1));
-				//Condition for RealCell
-				} else if (divCommand[2].matches("[0-9]+") && (divCommand[2].charAt('-') == 0 || divCommand[2].charAt('-') == 0)) {
-					spreadArr[colNum][rowNum] = new RealCell(divCommand[2]);
 				//Condition for PercentCell
 				} else if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
 					spreadArr[colNum][rowNum] = new PercentCell(divCommand[2]);

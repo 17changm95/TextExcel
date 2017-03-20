@@ -1,9 +1,3 @@
-/*
- * @author Michael Chang
- * @version 1.0
- * @since 3/6/2017
- */
-
 package textExcel;
 
 import java.io.FileNotFoundException;

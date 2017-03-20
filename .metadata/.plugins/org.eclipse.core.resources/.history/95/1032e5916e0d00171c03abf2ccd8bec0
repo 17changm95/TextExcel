@@ -30,11 +30,11 @@ public class RealCell implements Cell {
 		}
 	}
 	
-	public String fullCellText() { //returns full and actual value of cell
+	public String fullCellText() {
 		return this.str;
 	}
 	
-	public double getDoubleValue() { //converts str into double value
+	public double getDoubleValue() {
 		double num = Double.parseDouble(this.str);
 		return num;
 	}

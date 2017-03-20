@@ -1,0 +1,42 @@
+/*
+ * @author Michael Chang
+ * @version 1.0
+ * @since 3/6/2017
+ */
+
+package textExcel;
+
+public class PercentCell extends RealCell {
+
+	private String percent;
+	
+	public PercentCell(String percent) { //inherited constructor from realcell
+		super(percent);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String revisedStr = ((int)(getDoubleValue())) + "%";
+		int spaceNum = 10 - revisedStr.length();
+		if (revisedStr.length() < 10) {
+			for (int i = spaceNum; i > 0; i--) {
+				revisedStr += " ";
+			}
+			return revisedStr;
+		} else if (revisedStr.length() == 10){
+			return revisedStr;
+		} else {
+			return revisedStr;
+		}
+	}
+	
+	public String fullCellText() {
+		return (getDoubleValue()/100.0) + "";
+	}
+	
+	public double getDoubleValue() {
+		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 1);
+		double num = Double.parseDouble(modifiedStr);
+		return num;
+	}
+}

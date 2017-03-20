@@ -4,16 +4,17 @@ public class EmptyCell implements Cell {
 	
 	private String value;
 	
-	public EmptyCell() { //Constructor for EmptyCell class
+	//Constructor for EmptyCell class
+	public EmptyCell() {
 		this.value = fullCellText();
 		abbreviatedCellText();
 	}
 	
-	public String abbreviatedCellText() { //returns 10 chars of spaces
+	public String abbreviatedCellText() {
 		return "          ";
 	}
 	
-	public String fullCellText() { //returns ""
+	public String fullCellText() {
 		return "";
 	}
 	

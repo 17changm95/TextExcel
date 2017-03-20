@@ -9,11 +9,11 @@ public class EmptyCell implements Cell {
 		abbreviatedCellText();
 	}
 	
-	public String abbreviatedCellText() { //returns 10 chars of spaces
+	public String abbreviatedCellText() {
 		return "          ";
 	}
 	
-	public String fullCellText() { //returns ""
+	public String fullCellText() {
 		return "";
 	}
 	

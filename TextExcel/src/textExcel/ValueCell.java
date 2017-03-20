@@ -1,30 +1,26 @@
+/*
+ * @author Michael Chang
+ * @version 1.0
+ * @since 3/6/2017
+ */
+
 package textExcel;
 
 public class ValueCell extends RealCell implements Cell {
 	
-	public ValueCell(String value) {
+	public ValueCell(String value) { //inherits whatever the realcell constructor was
 		super(value);
 	}
 	
 	public String abbreviatedCellText() {
-		/*String str = super.abbreviatedCellText();
-		String[] stringArr = str.split(".");
-		char[] charArr = stringArr[2].toCharArray();
-		if (charArr[charArr.length - 1] == '0') {
-			stringArr[2] = stringArr[2].substring(0, stringArr[2].length() - 2);
-			return stringArr[0] + stringArr[1] + stringArr[2];
-		} else {*/
-			return super.abbreviatedCellText();
-		//}
+			return super.abbreviatedCellText(); //inherits realcell method of this method
 	}
 	
 	public String fullCellText() {
-		return super.fullCellText();
+		return super.fullCellText(); //inherits realcell method of this method
 	}
 	
-	@Override
 	public double getDoubleValue() {
-		//TODO: modify this thing
-		return super.getDoubleValue();
+		return super.getDoubleValue(); //inherits realcell method of this method
 	}
 }

@@ -24,17 +24,17 @@ public class RealCell implements Cell {
 			return revisedStr;
 		} else if (this.str.length() == 10){ //if revised string has exactly 10 characters then return revised string and make no modifications to gridtext
 			return revisedStr;
-		} else { //if revised string has more than 10 charcters then substring till 10 characters
+		} else { //if revised string has more than 10 charcters then substring till 10 charactersS
 			revisedStr = this.str.substring(0, 10);
 			return revisedStr;
 		}
 	}
 	
-	public String fullCellText() { //returns full and actual value of cell
+	public String fullCellText() {
 		return this.str;
 	}
 	
-	public double getDoubleValue() { //converts str into double value
+	public double getDoubleValue() {
 		double num = Double.parseDouble(this.str);
 		return num;
 	}

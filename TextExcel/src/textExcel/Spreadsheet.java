@@ -1,11 +1,9 @@
 package textExcel;
 import java.util.*;
 
-public class Spreadsheet implements Grid {
-	//Initializes a spreadArr that serves as a storage for Cell objects
-	private Cell[][] spreadArr = new Cell[12][20];
+	public class Spreadsheet implements Grid {
+		private Cell[][] spreadArr = new Cell[12][20];
 	
-	//Constructor for Spreadsheet class
 	public Spreadsheet() {
 		for (int i = 0; i < spreadArr.length; i++) {
 			for (int j = 0; j < spreadArr[i].length; j++) {
@@ -14,12 +12,9 @@ public class Spreadsheet implements Grid {
 		}
 	}
 	
-	//Method that detects what string input is put into the Scanner in the main method in order to execute whatever command is put in
 	@Override
 	public String processCommand(String command) {
-		//Partitions command into parts separated by spaces
 		String[] divCommand = command.split(" ", 3);
-		//Condition that command is "clear" will turn all cells on spreadArr into EmptyCell objects
 		if (command.equalsIgnoreCase("clear")) {
 			for (int i = 0; i < spreadArr.length; i++) {
 				for (int j = 0; j < spreadArr[i].length; j++) {
@@ -27,36 +22,26 @@ public class Spreadsheet implements Grid {
 				}
 			}
 			return getGridText();
-		//Condition that command is less than 3 characters to ensure the following command is the cell coordinate. Will inspect cell and return cell value
 		} else if (command.length() < 4) {
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);	
 			return (getCell(gridLoc).fullCellText());
-		//Condition that command can be parsed into array with more than one element
 		} else if (divCommand.length > 1) {
-			//Condition that command is an assignment of value to a cell coordinate
 			if (divCommand[1].equals("=")) {
 				SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[0]);
 				int rowNum = gridLoc.getRow();
-				int colNum = gridLoc.getCol();	
-				
-				//Condition for TextCell
+				int colNum = gridLoc.getCol();
 				if (divCommand[2].charAt(0) == '"' && divCommand[2].charAt(divCommand[2].length() - 1) == '"') {
 					spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(1, divCommand[2].length() - 1));
-				//Condition for RealCell
 				} else if (divCommand[2].matches("[0-9]+") && (divCommand[2].charAt('-') == 0 || divCommand[2].charAt('-') == 0)) {
 					spreadArr[colNum][rowNum] = new RealCell(divCommand[2]);
-				//Condition for PercentCell
 				} else if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
 					spreadArr[colNum][rowNum] = new PercentCell(divCommand[2]);
-				//Condition for ValueCell
 				} else if (divCommand[2].indexOf(".") > 0) {
 					spreadArr[colNum][rowNum] = new ValueCell(divCommand[2]);
-				//If none of the conditions are fulfilled then throw exception
 				} else {
 					throw new IllegalArgumentException("Please enter a valid assignment value.");
 				}
 				return getGridText();
-			//Condition that command can be parsed into array and contains "clear" as first element. Clears value of particular value cell or multiple cells separated by spacing
 			} else if (divCommand[0].equalsIgnoreCase("clear")) {
 				for (int i = 1; i < divCommand.length; i++) {
 					SpreadsheetLocation gridLoc = new SpreadsheetLocation(divCommand[i]);
@@ -65,35 +50,29 @@ public class Spreadsheet implements Grid {
 					spreadArr[colNum][gridLoc.getRow()] = new EmptyCell();
 				}
 				return getGridText();
-			//If none of the conditions are fulfilled then throw exception
 			} else {
 				throw new IllegalArgumentException("Please enter a valid input");
 			}
-		//If none of the conditions are fulfilled then throw exception
 		} else {
 			throw new IllegalArgumentException("Please enter a valid equality");
 		}
 	}
 
-	//Method that returns how many rows there are in spreadArr
 	@Override
 	public int getRows() {
 		return 20;
 	}
 
-	//Method that returns how many columns there are in spreadArr
 	@Override
 	public int getCols() {
 		return 12;
 	}
 
-	//Method that accesses the location of any cell in a character + integer format, such as B3
 	@Override
 	public Cell getCell(Location loc) {
 		return spreadArr[loc.getCol()][loc.getRow()];
 	}
 
-	//Method that returns a string containing the entire sheet grid
 	@Override
 	public String getGridText() {
 		String firstRow = "   ";	//is a printout of the first row

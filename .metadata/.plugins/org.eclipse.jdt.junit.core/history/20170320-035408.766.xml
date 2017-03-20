@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="A_Checkpoint3" project="TextExcel" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="textExcel.TestsALL.A_Checkpoint3" time="0.196">
+    <testcase name="testRealCellTruncation" classname="textExcel.TestsALL.A_Checkpoint3" time="0.008"/>
+    <testcase name="testBasicRealCell" classname="textExcel.TestsALL.A_Checkpoint3" time="0.003"/>
+    <testcase name="testProcessCommand" classname="textExcel.TestsALL.A_Checkpoint3" time="0.058"/>
+    <testcase name="testDifferentCellTypes" classname="textExcel.TestsALL.A_Checkpoint3" time="0.004"/>
+    <testcase name="testRealCellFormat" classname="textExcel.TestsALL.A_Checkpoint3" time="0.039"/>
+    <testcase name="testPercentCell" classname="textExcel.TestsALL.A_Checkpoint3" time="0.002"/>
+    <testcase name="testMoreRealCells" classname="textExcel.TestsALL.A_Checkpoint3" time="0.082"/>
+  </testsuite>
+</testrun>

@@ -34,14 +34,14 @@ import java.util.*;
 				int colNum = gridLoc.getCol();
 				if (divCommand[2].charAt(0) == '"' && divCommand[2].charAt(divCommand[2].length() - 1) == '"') {
 					spreadArr[colNum][rowNum] = new TextCell(divCommand[2].substring(1, divCommand[2].length() - 1));
-				} else if (divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
+				} else if (divCommand[2].matches("[0-9]+") && divCommand[2].substring(divCommand[2].length() - 1).equals("%")) {
 					spreadArr[colNum][rowNum] = new PercentCell(divCommand[2]);
-				} else if (divCommand[2].indexOf(".") > 0) {
+				} else if (divCommand[2].matches("[0-9]+") && divCommand[2].indexOf(".") > 0) {
 					spreadArr[colNum][rowNum] = new ValueCell(divCommand[2]);
-				} else if (divCommand[2].charAt(0) == '(' && divCommand[2].charAt(0) == ')'){
+				} else if (divCommand[2].matches("[0-9]+") && divCommand[2].charAt(0) == '(' && divCommand[2].charAt(0) == ')'){
 					spreadArr[colNum][rowNum] = new FormulaCell(divCommand[2]);
 				} else {
-					spreadArr[colNum][rowNum] = new RealCell(divCommand[2]);
+					spreadArr[colNum][rowNum] = new RealCell(divCommand[2];)
 				}
 				return getGridText();
 			} else if (divCommand[0].equalsIgnoreCase("clear")) {

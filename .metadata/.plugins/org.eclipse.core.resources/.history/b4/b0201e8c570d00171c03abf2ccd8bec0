@@ -10,27 +10,27 @@ public class PercentCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		String revisedStr = ((int)(getDoubleValue())) + "%";
+		String revisedStr = super.fullCellText();
 		int spaceNum = 10 - revisedStr.length();
+		
 		if (revisedStr.length() < 10) {
+			if (revisedStr.substring(revisedStr.length() - 2, revisedStr.length() - 1).equals("00")) {
+				
+			}
 			for (int i = spaceNum; i > 0; i--) {
 				revisedStr += " ";
 			}
 			return revisedStr;
-		} else if (revisedStr.length() == 10){
-			return revisedStr;
-		} else {
-			return revisedStr;
-		}
 	}
 	
 	public String fullCellText() {
-		return (getDoubleValue()/100.0) + "";
+		return super.fullCellText();
 	}
 	
 	public double getDoubleValue() {
-		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 1);
+		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 2);
 		double num = Double.parseDouble(modifiedStr);
+		num /= 100;
 		return num;
 	}
 }

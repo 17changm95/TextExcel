@@ -1,0 +1,57 @@
+package textExcel;
+
+public class PercentCell extends RealCell implements Cell {
+
+	private String percent;
+	
+	public PercentCell(String percent) {
+		super(percent);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String revisedStr = super.fullCellText();
+		int spaceNum = 10 - revisedStr.length();
+		
+		if (revisedStr.contains(".")) {
+			revisedStr = revisedStr.substring(0, revisedStr.charAt(revisedStr.indexOf('.'))) + "%";
+			if (revisedStr.length() < 10) {
+				if (revisedStr.substring(revisedStr.length() - 3, revisedStr.length() - 2).equals("00")) {
+					revisedStr = revisedStr.substring(0, revisedStr.length() - 3) + revisedStr.charAt(revisedStr.length() - 1);
+					for (int i = spaceNum; i > 0; i--) {
+						revisedStr += " ";
+					}
+					return revisedStr;
+				} else {
+					for (int i = spaceNum; i > 0; i--) {
+						revisedStr += " ";
+					}
+					return revisedStr;
+				}
+			} else if (revisedStr.length() == 10){
+				if (revisedStr.substring(revisedStr.length() - 3, revisedStr.length() - 2).equals("00")) {
+					revisedStr = revisedStr.substring(0, revisedStr.length() - 3) + "%";
+					for (int i = spaceNum; i > 0; i--) {
+						revisedStr += " ";
+					}
+					return revisedStr;
+				} else {
+					return revisedStr;
+				}
+		} else {
+			revisedStr = revisedStr.substring(0, 9) + "%";
+			return revisedStr;
+		}
+	}
+	
+	public String fullCellText() {
+		return super.fullCellText();
+	}
+	
+	public double getDoubleValue() {
+		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 2);
+		double num = Double.parseDouble(modifiedStr);
+		num /= 100;
+		return num;
+	}
+}

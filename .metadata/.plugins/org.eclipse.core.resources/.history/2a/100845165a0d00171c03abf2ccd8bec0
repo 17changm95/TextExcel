@@ -9,15 +9,15 @@ public class RealCell implements Cell {
 	}
 	
 	public String abbreviatedCellText() {
-		String revisedStr = getDoubleValue() + "";
-		int spaceNum = 10 - revisedStr.length();
+		int spaceNum = 10 - this.str.length();
+		String revisedStr = this.str;
 		if (this.str.length() < 10) {
 			for (int i = spaceNum; i > 0; i--) {
 				revisedStr += " ";
 			}
 			return revisedStr;
 		} else if (this.str.length() == 10){
-			return revisedStr;
+			return this.str;
 		} else {
 			revisedStr = this.str.substring(0, 10);
 			return revisedStr;

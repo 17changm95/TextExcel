@@ -19,7 +19,7 @@ import java.io.*;
 		}
 	}
 	
-	private String Save(String filename) { //Export functionality to be uploaded in updated version of my TextExcel
+	private String Export(String filename) { //Export functionality to be uploaded in updated version of my TextExcel
 		PrintStream outputFile;
 		try {
 				outputFile = new PrintStream(new File(filename));
@@ -31,9 +31,9 @@ import java.io.*;
 		for (int i = 0; i < spreadArr.length; i++) {
 			for (int j = 0; j < spreadArr[i].length; j++) {
 				if (spreadArr[i][j] instanceof EmptyCell) {
-					outputFile.print(spreadArr[i][j].fullCellText() + ", ");
+					outputFile.print(spreadArr[i][j].fullCellText() + ",");
 				} else {
-					outputFile.print(spreadArr[i][j].fullCellText() + ", ");
+					outputFile.print(spreadArr[i][j].fullCellText() + ",");
 				}
 			}
 			System.out.println();
@@ -42,7 +42,7 @@ import java.io.*;
 		return "";
 	}
 	
-	private String Open(String filename) { //Import functionality to be uploaded in updated version of my TextExcel
+	private String Import(String filename) { //Import functionality to be uploaded in updated version of my TextExcel
 		Scanner inputFile;
 		try {
 			inputFile = new Scanner(new File(filename));
@@ -88,11 +88,11 @@ import java.io.*;
 		} else if (command.length() == 0) { //if no input then "" is returned
 			return "";
 		} else if (divCommand[0].equalsIgnoreCase("save")) { //exports file into readable format, supports .csv and .txt
-			Save(divCommand[1]);
-			return getGridText();
-		} else if (divCommand[0].equalsIgnoreCase("open")) { //imports file into TextExcel
-			Open(divCommand[1]);
-			return getGridText();
+			Export(divCommand[1]);
+			return divCommand[1] + " successfully exported";
+		} else if (divCommand[0].equalsIgnoreCase("import")) { //imports file into TextExcel
+			Import(divCommand[1]);
+			return divCommand[1] + " successfully imported";
 		} else if (command.length() < 4) { //if input is 3 characters long then it is grid coordinate. returns grid grid coordinate
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);	
 			return (getCell(gridLoc).fullCellText());

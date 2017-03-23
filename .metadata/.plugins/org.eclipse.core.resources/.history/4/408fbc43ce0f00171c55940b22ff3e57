@@ -31,9 +31,9 @@ import java.io.*;
 		for (int i = 0; i < spreadArr.length; i++) {
 			for (int j = 0; j < spreadArr[i].length; j++) {
 				if (spreadArr[i][j] instanceof EmptyCell) {
-					outputFile.print(spreadArr[i][j].fullCellText() + ", ");
+					outputFile.print(spreadArr[i][j].fullCellText() + ",");
 				} else {
-					outputFile.print(spreadArr[i][j].fullCellText() + ", ");
+					outputFile.print(spreadArr[i][j].fullCellText() + ",");
 				}
 			}
 			System.out.println();

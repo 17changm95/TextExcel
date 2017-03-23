@@ -17,7 +17,6 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public double getDoubleValue() {
-		String formulaArr[] = super.fullCellText().split("[-+*/]");
-		
+		String formulaArr = .split("[0-9+]");
 	}
 }

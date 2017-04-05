@@ -24,7 +24,7 @@ public class RealCell implements Cell {
 			return revisedStr;
 		} else if (this.str.length() == 10){ //if revised string has exactly 10 characters then return revised string and make no modifications to gridtext
 			return revisedStr;
-		} else { //if revised string has more than 10 characters then substring till 10 characters
+		} else { //if revised string has more than 10 charcters then substring till 10 characters
 			revisedStr = this.str.substring(0, 10);
 			return revisedStr;
 		}

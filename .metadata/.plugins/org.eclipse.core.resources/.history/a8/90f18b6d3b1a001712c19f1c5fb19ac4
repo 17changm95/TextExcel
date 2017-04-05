@@ -26,6 +26,8 @@ public class FormulaCell extends RealCell implements Cell {
 				} else if (formulaDiv[i-1].equals("*")) {
 					result = a * b;
 				}
+			} else {
+				return (result + "").super.abbreviatedCellText();
 			}
 		}
 		return result + "";

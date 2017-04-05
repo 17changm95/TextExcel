@@ -1,0 +1,23 @@
+package textExcel;
+
+public class FormulaCell extends RealCell implements Cell {
+
+	public FormulaCell(String formula) {
+		super(formula);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String revisedStr = getString();
+		
+	}
+	
+	public String fullCellText() {
+		return ;
+	}
+	
+//	@Override
+//	public double getDoubleValue() {
+//		return ;
+//	}
+}

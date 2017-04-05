@@ -1,0 +1,25 @@
+package textExcel;
+
+public class PercentCell extends RealCell implements Cell {
+
+	private String percent;
+	
+	public PercentCell(String percent) {
+		super(percent);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		return (getDoubleValue()/100.0) + "";		
+	}
+	
+	public String fullCellText() {
+		return super.fullCellText();
+	}
+	
+	public double getDoubleValue() {
+		String modifiedStr = super.fullCellText().substring(0, super.fullCellText().length() - 1);
+		double num = Double.parseDouble(modifiedStr);
+		return num;
+	}
+}

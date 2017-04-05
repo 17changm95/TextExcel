@@ -1,0 +1,41 @@
+/*
+ * @author Michael Chang
+ * @version 1.0
+ * @since 3/6/2017
+ */
+
+package textExcel;
+
+public class RealCell implements Cell {
+
+	private String str; //string value stored in realcell
+	
+	public RealCell(String str) { //constructor
+		this.str = str;
+	}
+	
+	public String abbreviatedCellText() {
+		String revisedStr = getDoubleValue() + ""; //
+		int spaceNum = 10 - revisedStr.length(); //number of spaces left
+		if (this.str.length() < 10) {
+			for (int i = spaceNum; i > 0; i--) {
+				revisedStr += " ";
+			}
+			return revisedStr;
+		} else if (this.str.length() == 10){
+			return revisedStr;
+		} else {
+			revisedStr = this.str.substring(0, 10);
+			return revisedStr;
+		}
+	}
+	
+	public String fullCellText() {
+		return this.str;
+	}
+	
+	public double getDoubleValue() {
+		double num = Double.parseDouble(this.str);
+		return num;
+	}
+}

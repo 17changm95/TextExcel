@@ -1,0 +1,35 @@
+package textExcel;
+
+public class RealCell implements Cell {
+
+	private String str;
+	
+	public RealCell(String str) {
+		this.str = str;
+	}
+	
+	public String abbreviatedCellText() {
+		int spaceNum = 10 - this.str.length();
+		String revisedStr = getDoubleValue() + "";
+		if (this.str.length() < 10) {
+			for (int i = spaceNum; i > 0; i--) {
+				revisedStr += " ";
+			}
+			return revisedStr;
+		} else if (this.str.length() == 10){
+			return this.str;
+		} else {
+			revisedStr = this.str.substring(0, 10);
+			return revisedStr;
+		}
+	}
+	
+	public String fullCellText() {
+		return this.str;
+	}
+	
+	public double getDoubleValue() {
+		double num = Double.parseDouble(this.str);
+		return num;
+	}
+}

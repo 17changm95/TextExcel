@@ -1,0 +1,48 @@
+/*
+ * @author Michael Chang
+ * @version 1.0
+ * @since 3/6/2017
+ */
+
+package textExcel;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class TextExcel {
+	
+	private String getConstantFormulaString(int col)
+    {
+        String ret = "( 0.2";
+        String[] operators = {" + ", " - ", " * ", " / "};
+        int operator = 0;
+        String colS = "" + col;
+
+        for (int row = 1; row <= 18; row++)
+        {
+            ret += operators[operator] + colS + row;
+            operator = (operator + 1) % 4;
+        }
+
+        ret += " )";
+        return ret;
+    }
+	
+	//Main method
+	public static void main(String[] args) {
+		String command;
+		Spreadsheet spread = new Spreadsheet();
+		 for (int col = 0; col < 12; col++)
+         {
+             spread.processCommand(((char) ('A' + col)) + "19 = " + getConstantFormulaString(col));
+         }
+		Scanner input = new Scanner(System.in);
+		command = input.nextLine();
+		System.out.println(spread.processCommand(command));
+		
+		while (!command.equalsIgnoreCase("quit")) {
+			command = input.nextLine();
+		    System.out.println(spread.processCommand(command));
+		}
+	}
+}

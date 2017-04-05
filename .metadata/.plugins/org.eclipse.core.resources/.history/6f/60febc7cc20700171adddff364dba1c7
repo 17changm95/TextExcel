@@ -1,0 +1,14 @@
+package textExcel;
+
+public class TextCell implements Cell {
+
+	private String str;
+	
+	public String abbreviatedCellText() {
+		return "";
+	}
+	
+	public String fullCellText() {
+		return "";
+	}
+}

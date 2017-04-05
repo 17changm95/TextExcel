@@ -1,0 +1,86 @@
+package textExcel;
+import java.util.*;
+
+public class Spreadsheet implements Grid {
+	//Initializes a spreadsheet that serves as a storage for Cell objects
+	private Cell[][] spreadsheet = new EmptyCell[12][20];
+	
+	//Constructor for Spreadsheet class
+	public Spreadsheet() {
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[i].length; j++) {
+				spreadsheet[i][j] = new EmptyCell();
+			}
+		}
+	}
+	
+	//Method that detects what string input is put into the Scanner in the main method in order to execute whatever command is put in
+	@Override
+	public String processCommand(String command) {
+		//Following array is derived through split() which stores String inputs from command as elements separated by spaces
+		String[] divCommand = command.split(" ");
+		
+		//Following condition is to detect clear to clear out whole gridtext and replace with EmptyCell() objects. Returns string output to specify that command was executed
+		if (command.equalsIgnoreCase("clear")) {
+			for (int i = 0; i < spreadsheet.length; i++) {
+				for (int j = 0; j < spreadsheet[i].length; j++) {
+					spreadsheet[i][j] = new EmptyCell();
+				}
+			}
+			return "whole grid cleared";
+		//Following condition detects if = is present. Would assign value according to the data types contained within command
+		} else if (divCommand[1].equals("=")) {
+			String gridCoord = divCommand[0];
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(gridCoord);
+			
+		} else if (divCommand[1].equals("")) {
+			return getCell(rowNum, colNum);
+		}
+		return "";
+	}
+
+	//Method that returns how many rows there are in spreadsheet
+	@Override
+	public int getRows() {
+		return 20;
+	}
+
+	//Method that returns how many columsn there are in spreadsheet
+	@Override
+	public int getCols() {
+		
+		return 12;
+	}
+
+	//Method that accesses 
+	@Override
+	public Cell getCell(Location loc) {
+		SpreadsheetLocation gridLoc = new SpreadsheetLocation(loc);
+		
+		return Cell();
+	}
+
+	@Override
+	public String getGridText() {
+		String firstRow = "   ";	//is a printout of the first row
+		String regRow = "";			//is a printout of all other rows
+		
+		for (char c = 'A'; c <= 'L'; c++) {
+			firstRow += "|" + c + "         ";
+		}
+		
+		for (int j = 0; j < 20; j++) {
+			if (j + 1 < 10) {
+				regRow += (j + 1) + "  ";
+			} else  {
+				regRow += (j + 1) + " ";
+			}
+			for (int k = 0; k < 12; k++) {
+				regRow += "|" + spreadsheet[j][k].abbreviatedCellText();
+			}
+			regRow += "\n";
+		}
+		
+		return firstRow + "\n" + regRow;
+	}
+}

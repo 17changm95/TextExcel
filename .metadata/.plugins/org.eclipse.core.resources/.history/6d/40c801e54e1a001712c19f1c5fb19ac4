@@ -1,0 +1,31 @@
+
+public class MainTesting {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public String abbreviatedCellText(String str) {
+		String formula = str.substring(2, str.length()-2);
+		String[] formulaDiv = formula.split(" ");
+		double a;
+		double b;
+		double result = 0;
+		for (int i = 2; i < formulaDiv.length; i+=2) {
+			a = Double.parseDouble(formulaDiv[i - 2]);
+			b = Double.parseDouble(formulaDiv[i]);
+				if (formulaDiv[i - 1].equals("+")) {
+					result = a + b;
+				} else if (formulaDiv[i - 1].equals("-")) {
+					result  = a - b;
+				} else if (formulaDiv[i - 1].equals("/")) {
+					result = a / b;
+				} else if (formulaDiv[i - 1].equals("*")) {
+					result = a * b;
+				} else {
+					throw new IllegalArgumentException("Please enter a valid operator");
+				}
+		}
+		return result + "";
+	}
+}

@@ -24,8 +24,9 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public double getDoubleValue() {
-		String formula = fullCellText().substring(2, fullCellText().length() - 2);
-		String[] formulaDiv = formula.split(" ");
+		
+		String[] formulaDiv = fullCellText().split(" ");
+		double num;
 		double result;
 		if (formulaDiv[0].toLowerCase().equals("sum")) {
 			return sum(formulaDiv[1]);
@@ -41,26 +42,28 @@ public class FormulaCell extends RealCell implements Cell {
 		for (int i = 2; i < formulaDiv.length; i+=2) {
 			if (formulaDiv[i].length() < 4 && formulaDiv[0].substring(0,1).matches("[a-zA-Z]+")) {
 				SpreadsheetLocation gridLoc = new SpreadsheetLocation(formulaDiv[0]);
+				num = Double.parseDouble(formulaDiv[i]);
 				if (formulaDiv[i - 1].equals("+")) {
-					result += Double.parseDouble(formulaDiv[i]);
+					result += num;
 				} else if (formulaDiv[i - 1].equals("-")) {
-					result -= Double.parseDouble(formulaDiv[i]);
+					result -= num;
 				} else if (formulaDiv[i - 1].equals("/")) {
-					result /= Double.parseDouble(formulaDiv[i]);
+					result /= num;
 				} else if (formulaDiv[i - 1].equals("*")) {
-					result *= Double.parseDouble(formulaDiv[i]);
+					result *= num;
 				} else {
 					throw new IllegalArgumentException("Please enter a valid operator");
 				}
 			} else {
+				num = Double.parseDouble(formulaDiv[i]);
 				if (formulaDiv[i - 1].equals("+")) {
-					result += Double.parseDouble(formulaDiv[i]);
+					result += num;
 				} else if (formulaDiv[i - 1].equals("-")) {
-					result -= Double.parseDouble(formulaDiv[i]);
+					result -= num;
 				} else if (formulaDiv[i - 1].equals("/")) {
-					result /= Double.parseDouble(formulaDiv[i]);
+					result /= num;
 				} else if (formulaDiv[i - 1].equals("*")) {
-					result *= Double.parseDouble(formulaDiv[i]);
+					result *= num;
 				} else {
 					throw new IllegalArgumentException("Please enter a valid operator");
 				}

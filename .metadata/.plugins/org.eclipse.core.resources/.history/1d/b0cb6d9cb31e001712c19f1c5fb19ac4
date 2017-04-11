@@ -123,7 +123,7 @@ import java.io.*;
 					spreadArr[colNum][rowNum] = new ValueCell(divCommand[2]);
 				} else if (command.indexOf('(') > -1
 						&& command.indexOf(')') > -1) { //converting cell into formulacell if contains parentheses
-					spreadArr[colNum][rowNum] = new FormulaCell(divCommand[2], this);
+					spreadArr[colNum][rowNum] = new FormulaCell(command.substring(command.indexOf('(') + 2, command.length() - 1), this);
 				} else { //if all other conditions not fulfilled then left with realcell
 					spreadArr[colNum][rowNum] = new RealCell(divCommand[2]);
 				}

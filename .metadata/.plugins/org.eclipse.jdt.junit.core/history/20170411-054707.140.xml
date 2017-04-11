@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="B_Final" project="TextExcel" tests="20" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="textExcel.TestsALL.B_Final" incomplete="true">
+    <testcase name="testTransitiveNontrivialReferences" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testAvgSingleNontrivial" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testVertical" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testRectangular" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testTransitiveReferences" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testProcessCommandWithFunctions" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testFileIOComplexB" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testSaveFormatB" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testMultipleNesting" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testProcessCommand" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testVerticalNontrivial" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testHorizontalNontrivial" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testFormulaAssignment" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testAvgSingle" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testSumSingleNegative" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testMixedReferencesAndConstantsWithOrWithoutPrecedence" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testReferences" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testHorizontal" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testSumSingle" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+    <testcase name="testRectangularNontrivial" classname="textExcel.TestsALL.B_Final" incomplete="true"/>
+  </testsuite>
+</testrun>

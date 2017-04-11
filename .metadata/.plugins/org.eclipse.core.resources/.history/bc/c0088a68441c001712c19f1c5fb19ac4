@@ -39,4 +39,7 @@ public class RealCell implements Cell {
 		return num;
 	}
 	
+	public String getString() {
+		return this.str;
+	}
 }

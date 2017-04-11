@@ -20,6 +20,7 @@ public class FormulaCell extends RealCell implements Cell {
 	public double getDoubleValue() {
 		String formula = fullCellText().substring(2, fullCellText().length()-2);
 		String[] formulaDiv = formula.split(" ");
+		String answer;
 		double num;
 		double result = Double.parseDouble(formulaDiv[0]);
 		for (int i = 2; i < formulaDiv.length; i+=2) {

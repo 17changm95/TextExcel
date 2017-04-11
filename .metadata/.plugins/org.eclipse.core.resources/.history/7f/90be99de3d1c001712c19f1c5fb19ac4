@@ -8,18 +8,9 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		String answer = (getDoubleValue() + "          ").substring(0, 10);
-		return answer;
-	}
-	
-	public String fullCellText() {
-		return super.fullCellText();
-	}
-	
-	@Override
-	public double getDoubleValue() {
-		String formula = fullCellText().substring(2, fullCellText().length()-2);
+		String formula = getString().substring(2, getString().length()-2);
 		String[] formulaDiv = formula.split(" ");
+		String answer;
 		double num;
 		double result = Double.parseDouble(formulaDiv[0]);
 		for (int i = 2; i < formulaDiv.length; i+=2) {
@@ -36,6 +27,16 @@ public class FormulaCell extends RealCell implements Cell {
 					throw new IllegalArgumentException("Please enter a valid operator");
 				}
 		}
-		return result;
+		answer = result + "";
+		return answer;
 	}
+	
+	public String fullCellText() {
+		return getString();
+	}
+	
+//	@Override
+//	public double getDoubleValue() {
+//		return ;
+//	}
 }

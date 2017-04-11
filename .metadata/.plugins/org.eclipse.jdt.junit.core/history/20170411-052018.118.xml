@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="B_Final" project="TextExcel" tests="20" started="20" failures="2" errors="0" ignored="0">
+  <testsuite name="textExcel.TestsALL.B_Final" time="0.79">
+    <testcase name="testTransitiveNontrivialReferences" classname="textExcel.TestsALL.B_Final" time="0.017"/>
+    <testcase name="testAvgSingleNontrivial" classname="textExcel.TestsALL.B_Final" time="0.0"/>
+    <testcase name="testVertical" classname="textExcel.TestsALL.B_Final" time="0.015"/>
+    <testcase name="testRectangular" classname="textExcel.TestsALL.B_Final" time="0.016"/>
+    <testcase name="testTransitiveReferences" classname="textExcel.TestsALL.B_Final" time="0.016"/>
+    <testcase name="testProcessCommandWithFunctions" classname="textExcel.TestsALL.B_Final" time="0.069"/>
+    <testcase name="testFileIOComplexB" classname="textExcel.TestsALL.B_Final" time="0.367">
+      <failure>
+        <expected>0.1</expected>
+        <actual/>org.junit.ComparisonFailure: value cell inspection after reload expected:&lt;[0.1]&gt; but was:&lt;[]&gt;&#13;
+	at org.junit.Assert.assertEquals(Assert.java:115)&#13;
+	at textExcel.TestsALL$B_Final.testFileIOComplexB(TestsALL.java:1114)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="testSaveFormatB" classname="textExcel.TestsALL.B_Final" time="0.058">
+      <failure>
+        <expected>0</expected>
+        <actual>1</actual>org.junit.ComparisonFailure: Unable to find 'L20,ValueCell,0' in saved file expected:&lt;[0]&gt; but was:&lt;[1]&gt;&#13;
+	at org.junit.Assert.assertEquals(Assert.java:115)&#13;
+	at textExcel.TestsALL$B_Final.assertListContains(TestsALL.java:1002)&#13;
+	at textExcel.TestsALL$B_Final.testSaveFormatB(TestsALL.java:989)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="testMultipleNesting" classname="textExcel.TestsALL.B_Final" time="0.017"/>
+    <testcase name="testProcessCommand" classname="textExcel.TestsALL.B_Final" time="0.025"/>
+    <testcase name="testVerticalNontrivial" classname="textExcel.TestsALL.B_Final" time="0.004"/>
+    <testcase name="testHorizontalNontrivial" classname="textExcel.TestsALL.B_Final" time="0.004"/>
+    <testcase name="testFormulaAssignment" classname="textExcel.TestsALL.B_Final" time="0.061"/>
+    <testcase name="testAvgSingle" classname="textExcel.TestsALL.B_Final" time="0.008"/>
+    <testcase name="testSumSingleNegative" classname="textExcel.TestsALL.B_Final" time="0.008"/>
+    <testcase name="testMixedReferencesAndConstantsWithOrWithoutPrecedence" classname="textExcel.TestsALL.B_Final" time="0.013"/>
+    <testcase name="testReferences" classname="textExcel.TestsALL.B_Final" time="0.023"/>
+    <testcase name="testHorizontal" classname="textExcel.TestsALL.B_Final" time="0.014"/>
+    <testcase name="testSumSingle" classname="textExcel.TestsALL.B_Final" time="0.006"/>
+    <testcase name="testRectangularNontrivial" classname="textExcel.TestsALL.B_Final" time="0.047"/>
+  </testsuite>
+</testrun>

@@ -13,7 +13,7 @@ public class ValueCell extends RealCell implements Cell {
 	}
 	
 	public String abbreviatedCellText() {
-			return super.abbreviatedCellText(); //inherits realcell method of this method
+		return super.abbreviatedCellText(); //inherits realcell method of this method
 	}
 	
 	public String fullCellText() {

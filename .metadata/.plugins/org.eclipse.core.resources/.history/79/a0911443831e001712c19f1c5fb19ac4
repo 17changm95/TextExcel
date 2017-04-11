@@ -1,0 +1,60 @@
+package textExcel;
+
+public class FormulaCell extends RealCell implements Cell {
+	
+	private Spreadsheet spread;
+	
+	public FormulaCell(String formula) {
+		super(formula);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String answer = (getDoubleValue() + "          ").substring(0, 10);
+		return answer;
+	}
+	
+	public String fullCellText() {
+		return super.fullCellText();
+	}
+	
+	public static boolean isNumeric(String str) {  
+		try {  
+			double d = Double.parseDouble(str);
+		}
+		catch(NumberFormatException nfe) {  
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public double getDoubleValue() {
+		String formula = fullCellText().substring(2, fullCellText().length()-2);
+		String[] formulaDiv = formula.split(" ");
+		double num;
+		double result = 0;
+		if (formulaDiv[0].matches("[a-zA-Z]+")) {
+			SpreadsheetLocation gridLoc = new SpreadsheetLocation(formulaDiv[0]);
+			result = ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
+		} else {
+			result = Double.parseDouble(formulaDiv[0]);
+		}
+		Double.parseDouble(formulaDiv[0]);
+		for (int i = 2; i < formulaDiv.length; i+=2) {
+			num = Double.parseDouble(formulaDiv[i]);
+				if (formulaDiv[i - 1].equals("+")) {
+					result += num;
+				} else if (formulaDiv[i - 1].equals("-")) {
+					result -= num;
+				} else if (formulaDiv[i - 1].equals("/")) {
+					result /= num;
+				} else if (formulaDiv[i - 1].equals("*")) {
+					result *= num;
+				} else {
+					throw new IllegalArgumentException("Please enter a valid operator");
+				}
+		}
+		return result;
+	}
+}

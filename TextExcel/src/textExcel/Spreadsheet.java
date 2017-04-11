@@ -14,7 +14,7 @@ import java.io.*;
 	public Spreadsheet() {
 		for (int i = 0; i < spreadArr.length; i++) {
 			for (int j = 0; j < spreadArr[i].length; j++) {
-				spreadArr[i][j] = new EmptyCell(); //Initially array is initalized to only display EmptyCells everywhere
+				spreadArr[i][j] = new EmptyCell(); //Initially array is initialized to only display EmptyCells everywhere
 			}
 		}
 	}
@@ -56,7 +56,7 @@ import java.io.*;
 		return "";
 	}
 	
-	private String Open(String filename) { //Import functionality to be uploaded in updated version of my TextExcel
+	/*private String Open(String filename) { //Import functionality to be uploaded in updated version of my TextExcel
 		Scanner inputFile;
 			try {
 				inputFile = new Scanner(new File(filename));
@@ -84,7 +84,7 @@ import java.io.*;
 			}
 			inputFile.close();
 			return getGridText();
-	}
+	} */
 
 	
 	@Override
@@ -103,7 +103,7 @@ import java.io.*;
 			Save(divCommand[1]);
 			return getGridText();
 		} else if (divCommand[0].equalsIgnoreCase("open")) {
-			Open(divCommand[1]);
+			//Open(divCommand[1]);
 			return getGridText();
 		} else if (command.length() < 4) { //if input is 3 characters long then it is grid coordinate. returns grid grid coordinate
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);	
@@ -123,7 +123,7 @@ import java.io.*;
 					spreadArr[colNum][rowNum] = new ValueCell(divCommand[2]);
 				} else if (command.indexOf('(') > -1
 						&& command.indexOf(')') > -1) { //converting cell into formulacell if contains parentheses
-					spreadArr[colNum][rowNum] = new FormulaCell(command.substring(command.indexOf('(')));
+					spreadArr[colNum][rowNum] = new FormulaCell(command.substring(command.indexOf('(') + 2, command.length() - 1), this);
 				} else { //if all other conditions not fulfilled then left with realcell
 					spreadArr[colNum][rowNum] = new RealCell(divCommand[2]);
 				}

@@ -39,16 +39,16 @@ public class FormulaCell extends RealCell implements Cell {
 			result = Double.parseDouble(formulaDiv[0]);
 		}
 		for (int i = 2; i < formulaDiv.length; i+=2) {
-			if (formulaDiv[i].length() < 4 && formulaDiv[0].substring(0,1).matches("[a-zA-Z]+")) {
-				SpreadsheetLocation gridLoc = new SpreadsheetLocation(formulaDiv[0]);
+			if (formulaDiv[i].length() < 4 && formulaDiv[i].substring(0,1).matches("[a-zA-Z]+")) {
+				SpreadsheetLocation gridLoc = new SpreadsheetLocation(formulaDiv[i]);
 				if (formulaDiv[i - 1].equals("+")) {
-					result += Double.parseDouble(formulaDiv[i]);
+					result += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("-")) {
-					result -= Double.parseDouble(formulaDiv[i]);
+					result -= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("/")) {
-					result /= Double.parseDouble(formulaDiv[i]);
+					result /= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("*")) {
-					result *= Double.parseDouble(formulaDiv[i]);
+					result *= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else {
 					throw new IllegalArgumentException("Please enter a valid operator");
 				}

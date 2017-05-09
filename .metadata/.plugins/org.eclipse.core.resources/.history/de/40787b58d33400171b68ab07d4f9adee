@@ -70,15 +70,15 @@ public class FormulaCell extends RealCell implements Cell {
 	}
 	
 	public double sum(String range) {
-		String[] cells = range.split("-");
-		char outer1 = (cells[0].toLowerCase()).charAt(0);
-		char outer2 = (cells[1].toLowerCase()).charAt(0);
-		int inner1 = Integer.parseInt(cells[0].substring(1));
-		int inner2 = Integer.parseInt(cells[1].substring(1));
+		String[] cellSep = range.split("-");
 		double sum = 0;
-		for (char i = outer1; i <= outer2; i++) {
-			for (int j = inner1; j <= inner2; j++) {
-				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + "" + j);
+		char colStart = cellSep[0].charAt(0);
+		char colEnd = cellSep[1].charAt(0);
+		int rowStart = Integer.parseInt(cellSep[0].substring(1));
+		int rowEnd = Integer.parseInt(cellSep[1].substring(1));
+		for (char i = colStart; i < colEnd; i++) {
+			for (int j = rowStart; j < rowEnd; j++) {
+				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + j + "");
 				sum += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 			}
 		}
@@ -87,19 +87,14 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	public double avg(String range) {
 		String[] cells = range.split("-");
-		char outer1 = (cells[0].toLowerCase()).charAt(0);
-		char outer2 = (cells[1].toLowerCase()).charAt(0);
+		char outer1 = cells[0].charAt(0);
+		char outer2 = cells[1].charAt(0);
 		int inner1 = Integer.parseInt(cells[0].substring(1));
 		int inner2 = Integer.parseInt(cells[1].substring(1));
-		double sum = 0;
-		int divisor = 0;
 		for (char i = outer1; i <= outer2; i++) {
 			for (int j = inner1; j <= inner2; j++) {
-				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + "" + j);
-				sum += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
-				divisor++;
+				
 			}
 		}
-		return sum / divisor;
 	}
 }

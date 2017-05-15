@@ -43,6 +43,8 @@ import java.io.*;
 					outputFile.println(CellIdentifier(i, j) + "," + "ValueCell," + spreadArr[i][j].fullCellText());
 				} else if (spreadArr[i][j] instanceof PercentCell) {
 					outputFile.println(CellIdentifier(i, j) + "," + "PercentCell," + spreadArr[i][j].fullCellText());
+				} else if (spreadArr[i][j] instanceof ValueCell) {
+					outputFile.println(CellIdentifier(i, j) + "," + "ValueCell," + spreadArr[i][j].fullCellText());
 				} else if (spreadArr[i][j] instanceof FormulaCell) {
 					outputFile.println(CellIdentifier(i, j) + "," + "FormulaCell," + spreadArr[i][j].fullCellText());
 				} else {

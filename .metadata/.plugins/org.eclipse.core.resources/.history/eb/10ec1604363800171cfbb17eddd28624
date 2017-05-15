@@ -80,18 +80,12 @@ public class FormulaCell extends RealCell implements Cell {
 		return result;
 	}
 	
-	//method for sum
 	public double sum(String range) {
 		String[] cells = range.split("-");
-		//starting value for outer loop
 		char outer1 = (cells[0].toLowerCase()).charAt(0);
-		//ending value for outer loop
 		char outer2 = (cells[1].toLowerCase()).charAt(0);
-		//starting value for inner loop
 		int inner1 = Integer.parseInt(cells[0].substring(1));
-		//ending value for inner loop
 		int inner2 = Integer.parseInt(cells[1].substring(1));
-		//sum variable to which values are added
 		double sum = 0;
 		for (char i = outer1; i <= outer2; i++) {
 			for (int j = inner1; j <= inner2; j++) {
@@ -109,7 +103,6 @@ public class FormulaCell extends RealCell implements Cell {
 		int inner1 = Integer.parseInt(cells[0].substring(1));
 		int inner2 = Integer.parseInt(cells[1].substring(1));
 		double sum = 0;
-		//counter to count how many numbers were inputted
 		int divisor = 0;
 		for (char i = outer1; i <= outer2; i++) {
 			for (int j = inner1; j <= inner2; j++) {

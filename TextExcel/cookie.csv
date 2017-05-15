@@ -1,0 +1,5 @@
+A1,RealCell,14212
+A2,ValueCell,123.5
+A3,FormulaCell,( a1 + a2 )
+B4,RealCell,124
+C5,TextCell,"cookie"

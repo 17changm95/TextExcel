@@ -91,7 +91,6 @@ public class FormulaCell extends RealCell implements Cell {
 		int inner1 = Integer.parseInt(cells[0].substring(1));
 		//ending value for inner loop
 		int inner2 = Integer.parseInt(cells[1].substring(1));
-		//sum variable to which values are added
 		double sum = 0;
 		for (char i = outer1; i <= outer2; i++) {
 			for (int j = inner1; j <= inner2; j++) {
@@ -109,7 +108,6 @@ public class FormulaCell extends RealCell implements Cell {
 		int inner1 = Integer.parseInt(cells[0].substring(1));
 		int inner2 = Integer.parseInt(cells[1].substring(1));
 		double sum = 0;
-		//counter to count how many numbers were inputted
 		int divisor = 0;
 		for (char i = outer1; i <= outer2; i++) {
 			for (int j = inner1; j <= inner2; j++) {

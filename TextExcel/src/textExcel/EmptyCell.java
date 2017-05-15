@@ -18,6 +18,6 @@ public class EmptyCell implements Cell {
 	}
 	
 	public String printCell() {
-		return "";
+		return ""; //returns ""
 	}
 }

@@ -64,7 +64,26 @@ import java.io.*;
 			catch (FileNotFoundException e) {
 				return "File not found: " + filename;
 			}
-		
+		String input = inputFile.nextLine();
+			while (inputFile.hasNextLine()) {
+				String[] parseInput = input.split(",");
+				SpreadsheetLocation cellLoc = new SpreadsheetLocation(parseInput[0]);
+				if (parseInput[1].equals("TextCell")) {
+					processCommand(parseInput[0] + " = \"" + parseInput[2].substring(1, parseInput[2].length()) + "\"");
+				} else if (parseInput[1].equals("PercentCell")) {
+					double percent = Double.parseDouble(parseInput[2]);
+					percent *= 100;
+					processCommand(parseInput[0] + " = " + percent + "%");
+				} else if (parseInput[1].equals("ValueCell")
+						|| parseInput[1].equals("RealCell")
+						|| parseInput[1].equals("FormulaCell")) {
+					processCommand(parseInput[0] + " = " + parseInput[2]);
+				} else {
+					throw new IllegalArgumentException("Get rekt m8");
+				}
+			}
+			inputFile.close();
+			return getGridText();
 	}
 
 	
@@ -84,7 +103,7 @@ import java.io.*;
 			Save(divCommand[1]);
 			return getGridText();
 		} else if (divCommand[0].equalsIgnoreCase("open")) {
-			Open(divCommand[1]);
+			//Open(divCommand[1]);
 			return getGridText();
 		} else if (command.length() < 4) { //if input is 3 characters long then it is grid coordinate. returns grid grid coordinate
 			SpreadsheetLocation gridLoc = new SpreadsheetLocation(command);	

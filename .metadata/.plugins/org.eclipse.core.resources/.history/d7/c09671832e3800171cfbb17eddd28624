@@ -2,24 +2,12 @@ package textExcel;
 
 public class FormulaCell extends RealCell implements Cell {
 	
-	private Spreadsheet spread;
+	private Spreadsheet spread; //encapsulated Spreadsheet object
 	
-	public FormulaCell(String formula) {
-		super(formula);
-	}
-	
+	//constructor for FormulaCell, takes in string for formula and Spreadsheet object
 	public FormulaCell(String formula, Spreadsheet spread) {
 		super(formula);
 		this.spread = spread;
-	}
-	
-	@Override
-	public String abbreviatedCellText() {
-		return super.abbreviatedCellText();
-	}
-	
-	public String fullCellText() {
-		return super.fullCellText();
 	}
 	
 	@Override
@@ -39,16 +27,16 @@ public class FormulaCell extends RealCell implements Cell {
 			result = Double.parseDouble(formulaDiv[0]);
 		}
 		for (int i = 2; i < formulaDiv.length; i+=2) {
-			if (formulaDiv[i].length() < 4 && formulaDiv[0].substring(0,1).matches("[a-zA-Z]+")) {
+			if (formulaDiv[i].length() < 4 && formulaDiv[i].substring(0,1).matches("[a-zA-Z]+")) {
 				SpreadsheetLocation gridLoc = new SpreadsheetLocation(formulaDiv[i]);
 				if (formulaDiv[i - 1].equals("+")) {
-					result += Double.parseDouble(spread.getCell(gridLoc).toString());
+					result += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("-")) {
-					result -= Double.parseDouble(spread.getCell(gridLoc).toString());
+					result -= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("/")) {
-					result /= Double.parseDouble(spread.getCell(gridLoc).toString());
+					result /= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else if (formulaDiv[i - 1].equals("*")) {
-					result *= Double.parseDouble(spread.getCell(gridLoc).toString());
+					result *= ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 				} else {
 					throw new IllegalArgumentException("Please enter a valid operator");
 				}
@@ -70,15 +58,15 @@ public class FormulaCell extends RealCell implements Cell {
 	}
 	
 	public double sum(String range) {
-		String[] cellSep = range.split("-");
+		String[] cells = range.split("-");
+		char outer1 = (cells[0].toLowerCase()).charAt(0);
+		char outer2 = (cells[1].toLowerCase()).charAt(0);
+		int inner1 = Integer.parseInt(cells[0].substring(1));
+		int inner2 = Integer.parseInt(cells[1].substring(1));
 		double sum = 0;
-		char colStart = cellSep[0].charAt(0);
-		char colEnd = cellSep[1].charAt(0);
-		int rowStart = Integer.parseInt(cellSep[0].substring(1));
-		int rowEnd = Integer.parseInt(cellSep[1].substring(1));
-		for (char i = colStart; i < colEnd; i++) {
-			for (int j = rowStart; j < rowEnd; j++) {
-				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + j + "");
+		for (char i = outer1; i <= outer2; i++) {
+			for (int j = inner1; j <= inner2; j++) {
+				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + "" + j);
 				sum += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
 			}
 		}
@@ -86,20 +74,20 @@ public class FormulaCell extends RealCell implements Cell {
 	}
 	
 	public double avg(String range) {
-		String[] cellSep = range.split("-");
-		int count = 0;
+		String[] cells = range.split("-");
+		char outer1 = (cells[0].toLowerCase()).charAt(0);
+		char outer2 = (cells[1].toLowerCase()).charAt(0);
+		int inner1 = Integer.parseInt(cells[0].substring(1));
+		int inner2 = Integer.parseInt(cells[1].substring(1));
 		double sum = 0;
-		char colStart = cellSep[0].charAt(0);
-		char colEnd = cellSep[1].charAt(0);
-		int rowStart = Integer.parseInt(cellSep[0].substring(1));
-		int rowEnd = Integer.parseInt(cellSep[1].substring(1));
-		for (char i = colStart; i < colEnd; i++) {
-			for (int j = rowStart; j < rowEnd; j++) {
-				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + j + "");
+		int divisor = 0;
+		for (char i = outer1; i <= outer2; i++) {
+			for (int j = inner1; j <= inner2; j++) {
+				SpreadsheetLocation gridLoc = new SpreadsheetLocation(i + "" + j);
 				sum += ((RealCell) spread.getCell(gridLoc)).getDoubleValue();
-				count++;
+				divisor++;
 			}
 		}
-		return sum / count;
+		return sum / divisor;
 	}
 }
